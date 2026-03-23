@@ -2,14 +2,20 @@ import PageLayout from '@/components/PageLayout';
 import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { EXTERNAL_LINKS } from '@/config/externalLinks';
+import perryHeadshot from '@/images/perry-headshot.jpg';
+import hiabHeadshot from '@/images/hiab-headshot.jpg';
+import quincyHeadshot from '@/images/quincy-britton-headshot.jpeg';
+import ananyaHeadshot from '@/images/ananya.jpg';
+import charlesHeadshot from '@/images/charles-ezeribe-headshot.jpg';
+import abdulHeadshot from '@/images/abdul-ayinde-alao-headshot.jpg';
 
 const team = [
-  { name: 'Perry Takyi', role: 'Captain & Founding Member', image: '/images/perry Headshot .jpg' },
-  { name: 'Hiab Negash', role: 'Director of Marketing & Outreach', image: '/images/hiab headshot.jpg' },
-  { name: 'Quincy Britton', role: 'Director of Events', image: '/images/Quincy Britton Headshot.jpeg' },
-  { name: 'Ananya Shekhawat', role: 'Director of Operations', image: '/images/ananya.jpg' },
-  { name: 'Charles Ezeribe', role: 'Director of Technical Education', image: '/images/Charles Ezeribe Headshot.jpg' },
-  { name: 'Abdul Ayinde Alao', role: 'Director of Content & Media', image: '/images/Abdul Ayinde Photo.jpg' },
+  { name: 'Perry Takyi', role: 'Captain & Founding Member', image: perryHeadshot },
+  { name: 'Hiab Negash', role: 'Director of Marketing & Outreach', image: hiabHeadshot },
+  { name: 'Quincy Britton', role: 'Director of Events', image: quincyHeadshot },
+  { name: 'Ananya Shekhawat', role: 'Director of Operations', image: ananyaHeadshot },
+  { name: 'Charles Ezeribe', role: 'Director of Technical Education', image: charlesHeadshot },
+  { name: 'Abdul Ayinde Alao', role: 'Director of Content & Media', image: abdulHeadshot },
 ];
 
 const steps = [

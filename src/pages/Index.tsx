@@ -2,6 +2,7 @@ import PageLayout from '@/components/PageLayout';
 import ScrollReveal from '@/components/ScrollReveal';
 import { ArrowRight } from 'lucide-react';
 import { EXTERNAL_LINKS } from '@/config/externalLinks';
+import clubLogo from '@/images/AWS_Cloud_Club_at_University_of_Houston-removebg-preview.png';
 
 const HomePage = () => (
   <PageLayout>
@@ -24,7 +25,7 @@ const HomePage = () => (
           {/* Logo */}
           <div className="mx-auto mb-8 w-96 h-96 flex items-center justify-center p-2">
             <img 
-              src="/images/AWS_Cloud_Club_at_University_of_Houston-removebg-preview.png" 
+              src={clubLogo} 
               alt="AWS Cloud Club Logo"
               className="w-full h-full object-contain"
             />
