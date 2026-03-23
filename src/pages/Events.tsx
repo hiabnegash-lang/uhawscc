@@ -5,16 +5,17 @@ import { EXTERNAL_LINKS } from '@/config/externalLinks';
 
 const events = [
   {
-    title: 'Intro to AWS Cloud & Club Kickoff',
-    date: 'TBD — Check Meetup',
-    location: 'University of Houston, PGH Building',
-    desc: 'Meet the team, learn about the AWS Cloud Clubs program, and get started with your first cloud project.',
+    title: 'Launch Day: Intro To Cloud Computing With AWS Cloud Club at UH💻🐾',
+    date: 'Thursday, April 2nd, @ 3:00 PM - 4:30 PM',
+    location: 'University of Houston Sugar Land, SAB 1 Room: 249',
+    desc: 'Introduction to the AWS Cloud — Live Demo + Career Insights
+',
   },
   {
-    title: 'Hands-On: Deploy Your First App on AWS',
+    title: 'TBD — Check Meetup',
     date: 'TBD — Check Meetup',
-    location: 'University of Houston',
-    desc: 'A step-by-step workshop where you will deploy a web application using AWS Amplify and S3.',
+    location: 'TBD — Check Meetup',
+    desc: 'TBD — Check Meetup',
   },
 ];
 
