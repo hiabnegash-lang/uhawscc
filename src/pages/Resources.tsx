@@ -1,6 +1,6 @@
 import PageLayout from '@/components/PageLayout';
 import ScrollReveal from '@/components/ScrollReveal';
-import { UserPlus, BookOpen, Server, MessageCircle, ArrowRight } from 'lucide-react';
+import { UserPlus, BookOpen, Server, TreePine, ArrowRight } from 'lucide-react';
 import { EXTERNAL_LINKS } from '@/config/externalLinks';
 
 const resources = [
@@ -29,11 +29,11 @@ const resources = [
     external: true,
   },
   {
-    icon: <MessageCircle className="w-7 h-7 text-secondary" />,
-    title: 'Join Our Discord',
-    desc: 'Connect with club members between events, ask questions, and stay updated on club news.',
-    cta: 'Join Discord →',
-    href: EXTERNAL_LINKS.discord,
+    icon: <TreePine className="w-7 h-7 text-secondary" />,
+    title: 'Check out our LinkTree',
+    desc: 'Visit our LinkTree for a curated list of our social media, resources, and ways to get involved with the community.',
+    cta: 'Visit LinkTree →',
+    href: 'https://linktr.ee/uhawscc',
     external: true,
   },
 ];
