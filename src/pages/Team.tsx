@@ -1,6 +1,6 @@
 import PageLayout from '@/components/PageLayout';
 import ScrollReveal from '@/components/ScrollReveal';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Linkedin } from 'lucide-react';
 import { EXTERNAL_LINKS } from '@/config/externalLinks';
 import perryHeadshot from '@/images/perry-headshot.jpg';
 import hiabHeadshot from '@/images/hiab-headshot.jpg';
@@ -10,12 +10,12 @@ import charlesHeadshot from '@/images/charles-ezeribe-headshot.jpg';
 import abdulHeadshot from '@/images/abdul-ayinde-alao-headshot.jpg';
 
 const team = [
-  { name: 'Perry Takyi', role: 'Captain & Founding Member', image: perryHeadshot },
-  { name: 'Hiab Negash', role: 'Director of Marketing & Outreach', image: hiabHeadshot },
-  { name: 'Quincy Britton', role: 'Director of Events', image: quincyHeadshot },
-  { name: 'Ananya Shekhawat', role: 'Director of Operations', image: ananyaHeadshot },
-  { name: 'Charles Ezeribe', role: 'Director of Technical Education', image: charlesHeadshot },
-  { name: 'Abdul Ayinde Alao', role: 'Director of Content & Media', image: abdulHeadshot },
+  { name: 'Perry Takyi', role: 'Captain & Founding Member', image: perryHeadshot, linkedinUrl: 'https://www.linkedin.com/in/perry-takyi/' },
+  { name: 'Hiab Negash', role: 'Director of Marketing & Outreach', image: hiabHeadshot, linkedinUrl: 'https://www.linkedin.com/in/hiab-negash/' },
+  { name: 'Quincy Britton', role: 'Director of Events', image: quincyHeadshot, linkedinUrl: 'https://www.linkedin.com/in/quincy-britton-a35508317/' },
+  { name: 'Ananya Shekhawat', role: 'Director of Operations', image: ananyaHeadshot, linkedinUrl: 'https://www.linkedin.com/in/-ananya-shekhawat/' },
+  { name: 'Charles Ezeribe', role: 'Director of Technical Education', image: charlesHeadshot, linkedinUrl: 'https://www.linkedin.com/in/charles-ezeribe/' },
+  { name: 'Abdul Ayinde Alao', role: 'Director of Content & Media', image: abdulHeadshot, linkedinUrl: 'https://www.linkedin.com/in/abdul-azeez-ayinde/' },
 ];
 
 const steps = [
@@ -108,6 +108,36 @@ const TeamPage = () => (
             </a>
           </div>
         </ScrollReveal>
+      </div>
+    </section>
+
+    {/* Leadership */}
+    <section className="py-24 border-t border-border/20">
+      <div className="container mx-auto px-6">
+        <ScrollReveal>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-16">
+            <span className="text-gradient">Leadership</span>
+          </h2>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {team.map((member, i) => (
+            <ScrollReveal key={member.name} delay={i * 60}>
+              <div className="glass-card p-6 rounded-xl text-center transition-all duration-300">
+                {/* Avatar with headshot */}
+                <div className="w-20 h-20 rounded-full bg-muted mx-auto mb-4 overflow-hidden flex items-center justify-center">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="font-heading font-semibold text-foreground text-sm">{member.name}</h3>
+                <p className="text-xs text-muted-foreground mt-1">{member.role}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   </PageLayout>
