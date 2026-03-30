@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: uhawscc
+    runtime: node
+    plan: free
+    build:
+      command: npm ci && npm run build
+    start:
+      command: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
