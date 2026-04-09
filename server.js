@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
@@ -8,6 +9,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = process.env.PORT || 3000;
 const distPath = path.join(__dirname, "dist");
+const indexHtml = path.join(distPath, "index.html");
+
+// Fail fast if the production build is missing so the error is obvious
+// at startup rather than producing cryptic 404s at runtime.
+if (!fs.existsSync(indexHtml)) {
+  console.error(
+    `ERROR: ${indexHtml} not found. Run "npm run build" before starting the server.`
+  );
+  process.exit(1);
+}
 
 // Trust the first proxy hop (e.g., Render's reverse proxy) so that
 // express-rate-limit reads the real client IP from X-Forwarded-For
