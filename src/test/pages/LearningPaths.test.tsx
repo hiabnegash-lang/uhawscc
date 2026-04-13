@@ -17,7 +17,7 @@ describe("Learning Paths page", () => {
         "Official Exam Guide PDF (CLF-C02)",
         "AWS Cloud Practitioner Essentials",
         "AWS Cloud Quest: Cloud Practitioner",
-        "AWS Free Tier — Create Your Account",
+        "AWS Free Tier: Create Your Account",
         "Exam Prep Plan: CLF-C02",
         "Official Practice Exam (CLF-C02)",
         "Cloud Practitioner Training Hub",
