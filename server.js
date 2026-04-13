@@ -305,6 +305,9 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: { user: CONTACT_USER, pass: CONTACT_PASS },
+      // Fail fast rather than hanging the request if Gmail is unreachable.
+      connectionTimeout: 10_000,  // 10 s to establish TCP connection
+      socketTimeout: 15_000,      // 15 s of socket inactivity
     });
 
     // HTML-safe versions for email body
