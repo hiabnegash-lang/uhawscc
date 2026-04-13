@@ -122,6 +122,16 @@ function rssField(block, tag) {
   return cdata ? cdata[1].trim() : val;
 }
 
+/** Escape user-supplied strings before embedding in an HTML email body. */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 /** Strip HTML tags and collapse whitespace for clean descriptions. */
 function stripHtml(html) {
   return html
@@ -234,7 +244,7 @@ app.get("/api/events", async (req, res) => {
 
     res.json(events);
   } catch (err) {
-    console.error("[/api/events]", err.message);
+    console.error("[/api/events]", err instanceof Error ? err.message : String(err));
     // Return stale cache if available rather than a hard error
     if (eventsCache.data) return res.json(eventsCache.data);
     res.status(503).json([]);
@@ -270,7 +280,7 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
   // Server-side validation
   if (
     typeof name !== "string" || name.trim().length < 2 ||
-    typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ||
+    typeof email !== "string" || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ||
     typeof message !== "string" || message.trim().length < 10
   ) {
     return res.status(400).json({ error: "Please fill in all required fields." });
@@ -281,11 +291,15 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
   const CONTACT_TO   = process.env.CONTACT_EMAIL_TO || "uhawscloudclub@gmail.com";
 
   if (!CONTACT_USER || !CONTACT_PASS) {
-    // Email not configured yet — log and return success so the UX isn't broken
-    // during local dev. Remove this branch once credentials are set on Render.
-    console.warn("[/api/contact] Email credentials not set — message not sent.");
-    console.info("[/api/contact] Message from:", email, "|", name, "|", subject?.trim() || "(no subject)");
-    return res.json({ ok: true });
+    if (isDev) {
+      // Dev-only fallback: log and return success so the UX isn't broken locally.
+      console.warn("[/api/contact] Email credentials not set — message not sent.");
+      console.info("[/api/contact] Message from:", email, "|", name, "|", subject?.trim() || "(no subject)");
+      return res.json({ ok: true });
+    }
+    // In production, missing credentials is a misconfiguration — don't silently drop.
+    console.error("[/api/contact] CONTACT_EMAIL_USER / CONTACT_EMAIL_PASS not set in production.");
+    return res.status(503).json({ error: "Contact form is temporarily unavailable. Please email us directly." });
   }
 
   try {
@@ -322,7 +336,7 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
 
     res.json({ ok: true });
   } catch (err) {
-    console.error("[/api/contact]", err.message);
+    console.error("[/api/contact]", err instanceof Error ? err.message : String(err));
     res.status(500).json({ error: "Failed to send your message. Please email us directly." });
   }
 });

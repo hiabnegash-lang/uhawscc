@@ -1,6 +1,6 @@
 import PageLayout from '@/components/PageLayout';
 import ScrollReveal from '@/components/ScrollReveal';
-import { Calendar, MapPin, ArrowRight, RefreshCw, ExternalLink } from 'lucide-react';
+import { Calendar, ArrowRight, RefreshCw, ExternalLink } from 'lucide-react';
 import { EXTERNAL_LINKS } from '@/config/externalLinks';
 import { useEvents } from '@/hooks/useEvents';
 
